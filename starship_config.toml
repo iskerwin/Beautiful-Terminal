@@ -1,4 +1,5 @@
 format = """
+[┌───](bold green)\
 [](bg:#9A348E fg:#282a36)\
 [  ](bg:#9A348E fg:#F8f8f2)\
 [](bg:#DA627D fg:#9A348E)\
@@ -26,10 +27,10 @@ $docker_context\
 $time\
 [ ](fg:#33658A)\
 $sudo\
-$status\
-"""
-right_format = """
-$battery\
+$status
+[│](bold green)
+[└─](bold green)\
+[ #](bold blue)\
 """
 
 # Disable the blank line at the start of the prompt
@@ -165,24 +166,7 @@ not_executable_symbol = '[ ](red)'
 not_found_symbol = '[ ](yellow)'
 sigint_symbol = '[ ](purple)'
 signal_symbol = '[󰉁 ](green)'
-format = '[$symbol$common_meaning$signal_name$maybe_int]($style) '
+format = '[$symbol$common_meaning$signal_name$maybe_int]($style)'
 map_symbol = true
 disabled = false
 pipestatus = true
-
-[battery]
-full_symbol = '󰁹 '
-charging_symbol = '󰂄 '
-discharging_symbol = '󰂃 '
-unknown_symbol	= '󰁽 '
-empty_symbol = '󰂎 '
-disabled	= false
-[[battery.display]]
-threshold = 80
-style = 'bold green'
-[[battery.display]]
-threshold = 50
-style = 'bold yellow'
-[[battery.display]]
-threshold = 20
-style = 'bold red'
