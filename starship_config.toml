@@ -1,5 +1,4 @@
 format = """
-[┌───](bold green)\
 [](bg:#9A348E fg:#282a36)\
 [  ](bg:#9A348E fg:#F8f8f2)\
 [](bg:#DA627D fg:#9A348E)\
@@ -28,9 +27,7 @@ $time\
 [ ](fg:#33658A)\
 $sudo\
 $status
-[│](bold green)
-[└─](bold green)\
-[ #](bold blue)\
+[❯ ](bold #50fa7b)\
 """
 
 # Disable the blank line at the start of the prompt
@@ -159,13 +156,13 @@ disabled = false
 format = '[as $symbol]($style)'
 
 [status]
-style = 'bold fg:blue'
-symbol = '[ ](red)'
+style = 'bold fg:#6272a4'
+symbol = '[ ](#ff5555)'
 success_symbol = '[ ](green)SUCCESS'
-not_executable_symbol = '[ ](red)'
-not_found_symbol = '[ ](yellow)'
-sigint_symbol = '[ ](purple)'
-signal_symbol = '[󰉁 ](green)'
+not_executable_symbol = '[ ](#ff5555)'
+not_found_symbol = '[ ](#ffb86c)'
+sigint_symbol = '[ ](#bd93f9)'
+signal_symbol = '[󰉁 ](#50fa7b)'
 format = '[$symbol$common_meaning$signal_name$maybe_int]($style)'
 map_symbol = true
 disabled = false
