@@ -86,7 +86,7 @@ sh -c "$(wget -O- <https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tool
 
 ### 出现这个就可以了！！！
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/fce9815e-bcc0-47cc-8a6f-93d63a2cadfd/9a858ba8-5934-4260-9add-93257c00c7b1/Untitled.png)
+![Untitled](https://github.com/kerwinxxxxxx/Beautiful-Terminal/blob/main/ohmyzsh.png?raw=true)
 
 ### 解决 Mac 每次都要执行 `source ~/.bash_profile` 配置的环境变量才生效的问题
 
