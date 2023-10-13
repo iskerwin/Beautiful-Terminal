@@ -1,12 +1,13 @@
 format = """
-[](bg:#9A348E fg:#282a36)\
-[  ](bg:#9A348E fg:#F8f8f2)\
-[](bg:#DA627D fg:#9A348E)\
+[](bg:purple fg:black)\
+[  ](bg:purple fg:white)\
+$hostname\
+[](bg:orange-red fg:purple)\
 $directory\
-[](fg:#DA627D bg:#FCA17D)\
+[](fg:orange-red bg:orange)\
 $git_branch\
 $git_status\
-[](fg:#FCA17D bg:#86BBD8)\
+[](fg:orange bg:blue)\
 $c\
 $elixir\
 $elm\
@@ -20,34 +21,53 @@ $nim\
 $rust\
 $scala\
 $python\
-[](fg:#86BBD8 bg:#06969A)\
+[](fg:blue bg:cyan)\
 $docker_context\
-[](fg:#06969A bg:#33658A)\
+[](fg:cyan bg:deep-blue)\
 $time\
-[ ](fg:#33658A)\
+[ ](fg:deep-blue)\
 $sudo\
 $status
-[❯ ](bold #50fa7b)\
+[❯ ](bold green)\
 """
 
-# Disable the blank line at the start of the prompt
-# add_newline = false
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
 
-# You can also replace your username with a neat symbol like   or disable this
-# and use the os module below
-# [username]
-# show_always = true
-# style_user = "bg:#9A348E"
-# style_root = "bg:#9A348E"
-# format = '[$user ]($style)'
-# disabled = false
+# Disable the blank line at the start of the prompt
+add_newline = false
+
+# Set 'foo' as custom color palette
+palette = 'foo'
+
+# Define custom colors
+[palettes.foo]
+# Overwrite existing color
+black = '#282a36'
+blue = '#86bbd8'
+gray = '#6272a4'
+cyan = '#06969a'
+deep-blue = '#33658a'
+green = '#50fa7b'
+orange = '#fca17d'
+orange-red = '#da627d'
+purple = '#9a348e'
+red = '#ff5555'
+white = '#f8f8f2'
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
+[hostname]
+disabled = false
+format = '[$ssh_symbol on $hostname]($style)'
+ssh_only = true
+ssh_symbol = '󰌘'
+style = "bg:purple"
+trim_at = '.companyname.com'
 
 [directory]
-style = "bg:#DA627D"
 format = "[ $path ]($style)"
+style = "bg:orange-red"
 truncation_length = 3
 truncation_symbol = "…/"
 
@@ -65,105 +85,105 @@ truncation_symbol = "…/"
 # "Important 󰈙 " = " 󰈙 "
 
 [c]
-symbol = " "
-style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+style = "bg:blue"
+symbol = " "
 
 [docker_context]
-symbol = " "
-style = "bg:#06969A"
 format = '[ $symbol $context ]($style) $path'
+style = "bg:cyan"
+symbol = " "
 
 [elixir]
-symbol = " "
-style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+style = "bg:blue"
+symbol = " "
 
 [elm]
-symbol = " "
-style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+style = "bg:blue"
+symbol = " "
 
 [git_branch]
-symbol = " "
-style = "bg:#FCA17D"
 format = '[ $symbol $branch ]($style)'
+style = "bg:#FCA17D"
+symbol = " "
 
 [git_status]
-style = "bg:#FCA17D"
 format = '[$all_status$ahead_behind ]($style)'
+style = "bg:#FCA17D"
 
 [golang]
-symbol = " "
-style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+style = "bg:blue"
+symbol = " "
 
 [gradle]
-style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+style = "bg:blue"
 
 [haskell]
-symbol = " "
-style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+style = "bg:blue"
+symbol = " "
 
 [java]
-symbol = " "
-style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+style = "bg:blue"
+symbol = " "
 
 [julia]
-symbol = " "
-style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+style = "bg:blue"
+symbol = " "
 
 [nodejs]
-symbol = " "
-style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+style = "bg:blue"
+symbol = " "
 
 [nim]
-symbol = "󰆥 "
-style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+style = "bg:blue"
+symbol = "󰆥 "
 
 [rust]
-symbol = " "
-style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+style = "bg:blue"
+symbol = " "
 
 [scala]
-symbol = " "
-style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+style = "bg:blue"
+symbol = " "
 
 [python]
-symbol = ' '
-pyenv_version_name = true
-style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+pyenv_version_name = true
+style = "bg:blue"
+symbol = ' '
 
 [time]
 disabled = false
-time_format = "%m/%d %a %R"
-style = "bg:#33658A"
 format = '[   $time ]($style)'
+style = "bg:deep-blue"
+time_format = "%m/%d %a %R"
 
 [sudo]
-style = 'bold green'
-symbol = '󰇄  '
 disabled = false
 format = '[as $symbol]($style)'
+style = 'bold green'
+symbol = '󰇄  '
 
 [status]
-style = 'bold fg:#6272a4'
-symbol = '[ ](#ff5555)'
-success_symbol = '[ ](green)SUCCESS'
-not_executable_symbol = '[ ](#ff5555)'
-not_found_symbol = '[ ](#ffb86c)'
-sigint_symbol = '[ ](#bd93f9)'
-signal_symbol = '[󰉁 ](#50fa7b)'
+disabled = false
 format = '[$symbol$common_meaning$signal_name$maybe_int]($style)'
 map_symbol = true
-disabled = false
+not_executable_symbol = '[ ](red)'
+not_found_symbol = '[ ](orange)'
 pipestatus = true
+sigint_symbol = '[ ](purple)'
+signal_symbol = '[󰉁 ](green)'
+style = 'bold fg:gray'
+success_symbol = '[ ](green)SUCCESS'
+symbol = '[ ](red)'
