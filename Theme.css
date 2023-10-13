@@ -1,0 +1,28 @@
+  .Dracula_Theme {
+    Background : #282a36;
+    CurrentLine: #44475a;
+    Selection  : #44475a;
+    Foreground : #f8f8f2;
+    Comment    : #6272a4;
+    Cyan       : #8be9fd;
+    Green      : #50fa7b;
+    Orange     : #ffb86c;
+    Pink       : #ff79c6;
+    Purple     : #bd93f9;
+    Red        : #ff5555;
+    Yellow     : #f1fa8c;
+  }
+
+  .starship_theme {
+    purple_bg: #6A2C70;
+    purple_fg: #BD93F9;
+    red_bg   : #B83B5E;
+    red_fg   : #FF5555;
+    orange_bg: #F08A5D;
+    orange_fg: #FFB86C;
+    green_bg : #5F8D4E;
+    green_fg : #50FA7B;
+    cyan_bg  : #0C7B93;
+    blue_bg  : #205295;
+    gray_fg  : #6272A4;
+  }
