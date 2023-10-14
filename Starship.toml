@@ -108,16 +108,16 @@ symbol = " "
 format = '[ $all_status$ahead_behind ]($style)'
 style = "bg:orange_bg"
 conflicted = '󰇼'
-ahead = ' 󰶣 ${count}'
-behind = ' 󰶡 ${count}'
-diverged = ' 󰹺 󰶣 ${ahead_count} 󰶡 ${behind_count}'
-untracked =	'  '
-stashed	= '  '
-modified = ' '
-staged	= '[  \($count\)](green)'
-renamed	= ' 󱞶 '
-deleted	= '  '
-typechanged	= "  "
+ahead = '[ 󰶣 ${count}](fg:green_fg bg:orange_bg)'
+behind = '[ 󰶡 ${count}](fg:green_fg bg:orange_bg)'
+diverged = '[ 󰹺 ](fg:purple_fg bg:orange_bg)[ 󰶣 ${ahead_count}](fg:green_fg bg:orange_bg)[ 󰶡 ${behind_count}](fg:red_fg bg:orange_bg)'
+untracked =	'[  ](fg:red_fg bg:orange_bg)'
+stashed	= '[  ](fg:pueple_fg bg:orange_bg)'
+modified = '[  ](fg:red_fg bg:orange_bg)'
+staged	= '[  \($count\)](fg:green_fg bg:orange_bg)'
+renamed	= '[ 󱞶 ](fg:pueple_fg bg:orange_bg)'
+deleted	= '[  ](fg:red_fg bg:orange_bg)'
+typechanged	= "[  ](fg:purple_fg bg:orange_bg)"
 up_to_date = ""
 
 [git_metrics]
