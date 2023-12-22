@@ -1,9 +1,12 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+# zsh-autocomplete
 
+echo "Hello Kerwin!"
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/kerwin/.oh-my-zsh"
+export ZSH="/Users/$USERNAME/.oh-my-zsh"
 export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,12 +75,11 @@ ZSH_THEME="dracula"
 plugins=(
 	git
 	zsh-autocomplete
-	# zsh-autosuggestions
 	zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
-
+# The title
 ZSH_THEME_TERM_TITLE_IDLE="Kerwin"
 
 # User configuration
@@ -105,59 +107,128 @@ ZSH_THEME_TERM_TITLE_IDLE="Kerwin"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#--------------------------#
-# Other
-# -------------------------#
+
 alias ls="lsd"
 alias ssh="ct ssh"
 alias screen="ct screen"
 alias telnet="ct telnet"
 alias zshrc="source ~/.zshrc"
-# -------------------------#
-# homebrew-bundle
-# -------------------------#
-alias WeChat="open -n /Applications/WeChat.app/Contents/MacOS/WeChat"
+
+alias wechat="open -n /Applications/WeChat.app/Contents/MacOS/WeChat"
 alias backup="brew bundle dump --describe --force --file=\"~/Library/Mobile Documents/com~apple~CloudDocs/AppList/Brewfile_$(date +\"%Y-%m-%d-%H%M%S\")\""
-#--------------------------#
-# project simple
-# -------------------------#
 
-alias cls="clear" # 清理终端
-alias ..="cd .." # 返回上一级
-alias 。。="cd .." # 返回上一级
-alias ...="cd ../.." # 返回上上级
-alias 。。。="cd ../.." # 返回上上级
-alias ....="cd ../../.." # 返回上上上级
-alias 。。。。="cd ../../.." # 返回上上上级
-alias Github="/Users/kerwin/Dropbox/GitHub"
+alias c="clear" # cleaning terminal
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias path='echo; tr ":" "\n" <<< "$PATH"; echo;' # pretty print the PATH
+alias github="/Users/kerwin/Dropbox/GitHub"
 
-#--------------------------#
-# Git
-# -------------------------#
-alias gl="git log" # 查看提交日志
-alias gp="git push" # 推送
-alias ga="git add ." # 添加
-alias gs="git status" # 查看状态
-alias gb="git branch" # 查看分支
-alias gc="git add . && git commit -m" # 提交
-alias gcc="git checkout" # 切换分支
-alias gbd="git branch -D" # 删除分支
-alias gba="git branch -a" # 查看所有分支
-alias gbm="git branch -m" # 重命名分支
-alias gpf="git push --force" # 强制推送
-alias gpl="git pull --rebase" # 拉取
-#--------------------------#
+alias ip="ifconfig -a | egrep -A 7 '^en0' | grep inet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | head -n 1" # show my local ip
+alias myip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g'" # show my external ip
+
+alias ga="git add ."
+alias gs="git stutas"
+alias gl="git log --oneline --graph --decorate --all" # view commit history
+alias gm="git commit -m" # commit all staging area files to the local repository
+alias gam="git commit -am" # commit all modified files to the local repository
 
 # starship
 eval "$(starship init zsh)"
 
-# zsh-autocomplete
-# source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
-# zsh-autosuggestions
-# source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# zsh-syntax-highlighting
-source /Users/kerwin/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-
+# thefuck
 eval $(thefuck --alias)
+
+# Dracula Theme (for zsh-syntax-highlighting)
+#
+# https://github.com/zenorocha/dracula-theme
+#
+# Copyright 2021, All rights reserved
+#
+# Code licensed under the MIT license
+# http://zenorocha.mit-license.org
+#
+# @author George Pickering <@bigpick>
+# @author Zeno Rocha <hi@zenorocha.com>
+# Paste this files contents inside your ~/.zshrc before you activate zsh-syntax-highlighting
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main cursor)
+typeset -gA ZSH_HIGHLIGHT_STYLES
+# Default groupings per, https://spec.draculatheme.com, try to logically separate
+# possible ZSH_HIGHLIGHT_STYLES settings accordingly...?
+#
+# Italics not yet supported by zsh; potentially soon:
+#    https://github.com/zsh-users/zsh-syntax-highlighting/issues/432
+#    https://www.zsh.org/mla/workers/2021/msg00678.html
+# ... in hopes that they will, labelling accordingly with ,italic where appropriate
+#
+# Main highlighter styling: https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md
+#
+## General
+### Diffs
+### Markup
+## Classes
+## Comments
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#6272A4'
+## Constants
+## Entitites
+## Functions/methods
+ZSH_HIGHLIGHT_STYLES[alias]='fg=#50FA7B'
+ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=#50FA7B'
+ZSH_HIGHLIGHT_STYLES[global-alias]='fg=#50FA7B'
+ZSH_HIGHLIGHT_STYLES[function]='fg=#50FA7B'
+ZSH_HIGHLIGHT_STYLES[command]='fg=#50FA7B'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=#50FA7B,italic'
+ZSH_HIGHLIGHT_STYLES[autodirectory]='fg=#FFB86C,italic'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#FFB86C'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#FFB86C'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=#BD93F9'
+## Keywords
+## Built ins
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=#8BE9FD'
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#8BE9FD'
+ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=#8BE9FD'
+## Punctuation
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#FF79C6'
+ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter-unquoted]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[process-substitution-delimiter]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument-delimiter]='fg=#FF79C6'
+ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=#FF79C6'
+ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]='fg=#FF79C6'
+## Serializable / Configuration Languages
+## Storage
+## Strings
+ZSH_HIGHLIGHT_STYLES[command-substitution-quoted]='fg=#F1FA8C'
+ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter-quoted]='fg=#F1FA8C'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#F1FA8C'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument-unclosed]='fg=#FF5555'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#F1FA8C'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument-unclosed]='fg=#FF5555'
+ZSH_HIGHLIGHT_STYLES[rc-quote]='fg=#F1FA8C'
+## Variables
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument-unclosed]='fg=#FF5555'
+ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[assign]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[named-fd]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[numeric-fd]='fg=#F8F8F2'
+## No category relevant in spec
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#FF5555'
+ZSH_HIGHLIGHT_STYLES[path]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=#FF79C6'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]='fg=#FF79C6'
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=#BD93F9'
+#ZSH_HIGHLIGHT_STYLES[command-substitution]='fg=?'
+#ZSH_HIGHLIGHT_STYLES[command-substitution-unquoted]='fg=?'
+#ZSH_HIGHLIGHT_STYLES[process-substitution]='fg=?'
+#ZSH_HIGHLIGHT_STYLES[arithmetic-expansion]='fg=?'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument-unclosed]='fg=#FF5555'
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[arg0]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[default]='fg=#F8F8F2'
+ZSH_HIGHLIGHT_STYLES[cursor]='standout'
+
+#
+source /Users/$USERNAME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
