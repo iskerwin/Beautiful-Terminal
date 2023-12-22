@@ -79,7 +79,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-# The title
+# terminal title
 ZSH_THEME_TERM_TITLE_IDLE="Kerwin"
 
 # User configuration
