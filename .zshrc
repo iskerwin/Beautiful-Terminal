@@ -1,17 +1,16 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # zsh-autocomplete
-
 echo "Hello Kerwin!"
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/$USERNAME/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=/opt/homebrew/sbin:$PATH
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See <https://github.com/ohmyzsh/ohmyzsh/wiki/Themes>
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME="robbyrussell"
 ZSH_THEME="dracula"
 
 # Set list of themes to pick from when loading at random
@@ -27,14 +26,13 @@ ZSH_THEME="dracula"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -49,6 +47,9 @@ ZSH_THEME="dracula"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -79,6 +80,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
 # terminal title
 ZSH_THEME_TERM_TITLE_IDLE="Kerwin"
 
@@ -108,30 +110,41 @@ ZSH_THEME_TERM_TITLE_IDLE="Kerwin"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias vz="vim ~/.zshrc"
+alias sz="source ~/.zshrc"
+
 alias ls="lsd"
-alias ssh="ct ssh"
-alias screen="ct screen"
-alias telnet="ct telnet"
-alias zshrc="source ~/.zshrc"
-
-alias wechat="open -n /Applications/WeChat.app/Contents/MacOS/WeChat"
-alias backup="brew bundle dump --describe --force --file=\"~/Library/Mobile Documents/com~apple~CloudDocs/AppList/Brewfile_$(date +\"%Y-%m-%d-%H%M%S\")\""
-
-alias c="clear" # cleaning terminal
+alias la="ls -a"
+alias ll="ls -la"
+alias lh="ls -lh"
+alias lt="ls --tree"
+alias l.="ls -d .* --color=auto"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias path='echo; tr ":" "\n" <<< "$PATH"; echo;' # pretty print the PATH
-alias github="/Users/kerwin/Dropbox/GitHub"
-
-alias ip="ifconfig -a | egrep -A 7 '^en0' | grep inet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | head -n 1" # show my local ip
-alias myip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g'" # show my external ip
 
 alias ga="git add ."
 alias gs="git stutas"
+alias gm="git commit -m"                              # commit all staging area files to the local repository
 alias gl="git log --oneline --graph --decorate --all" # view commit history
-alias gm="git commit -m" # commit all staging area files to the local repository
-alias gam="git commit -am" # commit all modified files to the local repository
+alias gam="git commit -am"                            # commit all modified files to the local repository
+alias github="/Users/kerwin/Dropbox/GitHub"
+
+alias ssh="ct ssh"
+alias screen="ct screen"
+alias telnet="ct telnet"
+alias wechat="open -n /Applications/WeChat.app/Contents/MacOS/WeChat"
+alias backup="brew bundle dump --describe --force --file=\"~/Library/Mobile Documents/com~apple~CloudDocs/AppList/Brewfile_$(date +\"%Y-%m-%d-%H%M%S\")\""
+alias update="brew cu -a -f -v --no-brew-update -y"
+alias speed="networkQuality"
+
+alias c="clear" # cleaning terminal
+alias his="history"
+alias hisg='history | grep'
+alias path='echo -e ${PATH//:/\\n}' # pretty print the PATH
+
+alias ip="ifconfig -a | egrep -A 7 '^en0' | grep inet | grep -oE '((1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])' | head -n 1" # show my local ip
+alias myip="curl -s http://checkip.dyndns.org/ | sed 's/[a-zA-Z<>/ :]//g'"                                                                                    # show my external ip
 
 # starship
 eval "$(starship init zsh)"
@@ -229,6 +242,5 @@ ZSH_HIGHLIGHT_STYLES[redirection]='fg=#F8F8F2'
 ZSH_HIGHLIGHT_STYLES[arg0]='fg=#F8F8F2'
 ZSH_HIGHLIGHT_STYLES[default]='fg=#F8F8F2'
 ZSH_HIGHLIGHT_STYLES[cursor]='standout'
-
 #
 source /Users/$USERNAME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
