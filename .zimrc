@@ -10,8 +10,6 @@
 
 # Sets sane Zsh built-in environment options.
 zmodule environment
-# Provides handy git aliases and functions.
-zmodule git
 # Applies correct bindkeys for input events.
 zmodule input
 # Sets a custom terminal title.
@@ -20,17 +18,17 @@ zmodule termtitle
 zmodule utility
 # Figures out where to get the best help, and gets it.
 zmodule run-help
+# Provides a convenient way to load ssh-agent.
+zmodule ssh
+# Adds aliases for Homebrew.
+zmodule homebrew
 
 #
 # Prompt
 # 
 
-# Exposes to prompts how long the last command took to execute, used by asciiship.
-zmodule duration-info
-# Exposes git repository status information to prompts, used by asciiship.
-zmodule git-info
-# A heavily reduced, ASCII-only version of the Spaceship and Starship prompts.
-zmodule asciiship
+# Starship prompt for zsh
+zmodule joke/zim-starship
 
 #
 # Completion
@@ -51,9 +49,9 @@ zmodule completion
 zmodule zsh-users/zsh-syntax-highlighting
 # Fish-like history search (up arrow) for Zsh.
 # zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
-zmodule zsh-users/zsh-history-substring-search
+# zmodule zsh-users/zsh-history-substring-search
 # Fish-like autosuggestions for Zsh.
 zmodule zsh-users/zsh-autosuggestions
-# Starship prompt for zsh
-zmodule joke/zim-starship
+# Real-time type-ahead completion for Zsh. Asynchronous find-as-you-type autocompletion.
+zmodule marlonrichert/zsh-autocomplete
 # }}} End configuration added by Zim install
