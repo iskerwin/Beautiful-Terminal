@@ -32,12 +32,12 @@ bindkey -e
 WORDCHARS=${WORDCHARS//[\/]}
 
 # alias
-alias ls="lsd"
-alias la="ls -a"
-alias ll="ls -la"
-alias lh="ls -lh"
-alias lt="ls --tree"
-alias l.="ls -d .* --color=auto"
+# alias ls="lsd"
+# alias la="ls -a"
+# alias ll="ls -la"
+# alias lh="ls -lh"
+# alias lt="ls --tree"
+# alias l.="ls -d .* --color=auto"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -78,6 +78,12 @@ alias zim="zimfw"
 # --------------------
 
 #
+# ssh
+#
+# To define the identities (from ~/.ssh) to be loaded and cached on login.
+zstyle ':zim:ssh' ids 'id_rsa1' 'id_rsa2' 'id_rsa3'
+
+#
 # git
 #
 
@@ -98,7 +104,7 @@ alias zim="zimfw"
 # Set a custom terminal title format using prompt expansion escape sequences.
 # See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
 # If none is provided, the default '%n@%m: %~' is used.
-#zstyle ':zim:termtitle' format '%1~'
+zstyle ':zim:termtitle' format '%1~'
 
 #
 # zsh-autosuggestions
@@ -155,11 +161,11 @@ source ${ZIM_HOME}/init.zsh
 # zsh-history-substring-search
 #
 
-zmodload -F zsh/terminfo +p:terminfo
+# zmodload -F zsh/terminfo +p:terminfo
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
-for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
-for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
-for key ('k') bindkey -M vicmd ${key} history-substring-search-up
-for key ('j') bindkey -M vicmd ${key} history-substring-search-down
-unset key
+# for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
+# for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
+# for key ('k') bindkey -M vicmd ${key} history-substring-search-up
+# for key ('j') bindkey -M vicmd ${key} history-substring-search-down
+# unset key
 # }}} End configuration added by Zim install
